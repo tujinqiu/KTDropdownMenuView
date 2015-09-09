@@ -1,0 +1,496 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A9F91F9F05DC99F7ABEF5479 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A18E021C53DE15EC2A9B9463 /* libPods.a */; };
+		E34EE3011BA0530700759ADC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E34EE3001BA0530700759ADC /* main.m */; };
+		E34EE3041BA0530700759ADC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E34EE3031BA0530700759ADC /* AppDelegate.m */; };
+		E34EE3071BA0530700759ADC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E34EE3061BA0530700759ADC /* ViewController.m */; };
+		E34EE30A1BA0530800759ADC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E34EE3081BA0530700759ADC /* Main.storyboard */; };
+		E34EE30C1BA0530800759ADC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E34EE30B1BA0530800759ADC /* Images.xcassets */; };
+		E34EE30F1BA0530800759ADC /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E34EE30D1BA0530800759ADC /* LaunchScreen.xib */; };
+		E34EE31B1BA0530800759ADC /* KTDropdownMenuViewDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E34EE31A1BA0530800759ADC /* KTDropdownMenuViewDemoTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E34EE3151BA0530800759ADC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E34EE2F31BA0530700759ADC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E34EE2FA1BA0530700759ADC;
+			remoteInfo = KTDropdownMenuViewDemo;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		A18E021C53DE15EC2A9B9463 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA645F0C76104EEE5BD34F17 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		E34EE2FB1BA0530700759ADC /* KTDropdownMenuViewDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KTDropdownMenuViewDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E34EE2FF1BA0530700759ADC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E34EE3001BA0530700759ADC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		E34EE3021BA0530700759ADC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		E34EE3031BA0530700759ADC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		E34EE3051BA0530700759ADC /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		E34EE3061BA0530700759ADC /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		E34EE3091BA0530800759ADC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		E34EE30B1BA0530800759ADC /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		E34EE30E1BA0530800759ADC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		E34EE3141BA0530800759ADC /* KTDropdownMenuViewDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KTDropdownMenuViewDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E34EE3191BA0530800759ADC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E34EE31A1BA0530800759ADC /* KTDropdownMenuViewDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KTDropdownMenuViewDemoTests.m; sourceTree = "<group>"; };
+		EE8235C6A89536B7A8F0F35B /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E34EE2F81BA0530700759ADC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A9F91F9F05DC99F7ABEF5479 /* libPods.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E34EE3111BA0530800759ADC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		514FD5D759DCBA893CEEECB5 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				AA645F0C76104EEE5BD34F17 /* Pods.debug.xcconfig */,
+				EE8235C6A89536B7A8F0F35B /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		71FA01E8715D65C43D43E192 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A18E021C53DE15EC2A9B9463 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E34EE2F21BA0530700759ADC = {
+			isa = PBXGroup;
+			children = (
+				E34EE2FD1BA0530700759ADC /* KTDropdownMenuViewDemo */,
+				E34EE3171BA0530800759ADC /* KTDropdownMenuViewDemoTests */,
+				E34EE2FC1BA0530700759ADC /* Products */,
+				514FD5D759DCBA893CEEECB5 /* Pods */,
+				71FA01E8715D65C43D43E192 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		E34EE2FC1BA0530700759ADC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E34EE2FB1BA0530700759ADC /* KTDropdownMenuViewDemo.app */,
+				E34EE3141BA0530800759ADC /* KTDropdownMenuViewDemoTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E34EE2FD1BA0530700759ADC /* KTDropdownMenuViewDemo */ = {
+			isa = PBXGroup;
+			children = (
+				E34EE3021BA0530700759ADC /* AppDelegate.h */,
+				E34EE3031BA0530700759ADC /* AppDelegate.m */,
+				E34EE3051BA0530700759ADC /* ViewController.h */,
+				E34EE3061BA0530700759ADC /* ViewController.m */,
+				E34EE3081BA0530700759ADC /* Main.storyboard */,
+				E34EE30B1BA0530800759ADC /* Images.xcassets */,
+				E34EE30D1BA0530800759ADC /* LaunchScreen.xib */,
+				E34EE2FE1BA0530700759ADC /* Supporting Files */,
+			);
+			path = KTDropdownMenuViewDemo;
+			sourceTree = "<group>";
+		};
+		E34EE2FE1BA0530700759ADC /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E34EE2FF1BA0530700759ADC /* Info.plist */,
+				E34EE3001BA0530700759ADC /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E34EE3171BA0530800759ADC /* KTDropdownMenuViewDemoTests */ = {
+			isa = PBXGroup;
+			children = (
+				E34EE31A1BA0530800759ADC /* KTDropdownMenuViewDemoTests.m */,
+				E34EE3181BA0530800759ADC /* Supporting Files */,
+			);
+			path = KTDropdownMenuViewDemoTests;
+			sourceTree = "<group>";
+		};
+		E34EE3181BA0530800759ADC /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E34EE3191BA0530800759ADC /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E34EE2FA1BA0530700759ADC /* KTDropdownMenuViewDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E34EE31E1BA0530800759ADC /* Build configuration list for PBXNativeTarget "KTDropdownMenuViewDemo" */;
+			buildPhases = (
+				1BFAEE4FEC82D78AC258DC10 /* Check Pods Manifest.lock */,
+				E34EE2F71BA0530700759ADC /* Sources */,
+				E34EE2F81BA0530700759ADC /* Frameworks */,
+				E34EE2F91BA0530700759ADC /* Resources */,
+				3A8D87C33C983619C02B4F75 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = KTDropdownMenuViewDemo;
+			productName = KTDropdownMenuViewDemo;
+			productReference = E34EE2FB1BA0530700759ADC /* KTDropdownMenuViewDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		E34EE3131BA0530800759ADC /* KTDropdownMenuViewDemoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E34EE3211BA0530800759ADC /* Build configuration list for PBXNativeTarget "KTDropdownMenuViewDemoTests" */;
+			buildPhases = (
+				E34EE3101BA0530800759ADC /* Sources */,
+				E34EE3111BA0530800759ADC /* Frameworks */,
+				E34EE3121BA0530800759ADC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E34EE3161BA0530800759ADC /* PBXTargetDependency */,
+			);
+			name = KTDropdownMenuViewDemoTests;
+			productName = KTDropdownMenuViewDemoTests;
+			productReference = E34EE3141BA0530800759ADC /* KTDropdownMenuViewDemoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E34EE2F31BA0530700759ADC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0640;
+				ORGANIZATIONNAME = tujinqiu;
+				TargetAttributes = {
+					E34EE2FA1BA0530700759ADC = {
+						CreatedOnToolsVersion = 6.4;
+					};
+					E34EE3131BA0530800759ADC = {
+						CreatedOnToolsVersion = 6.4;
+						TestTargetID = E34EE2FA1BA0530700759ADC;
+					};
+				};
+			};
+			buildConfigurationList = E34EE2F61BA0530700759ADC /* Build configuration list for PBXProject "KTDropdownMenuViewDemo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = E34EE2F21BA0530700759ADC;
+			productRefGroup = E34EE2FC1BA0530700759ADC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E34EE2FA1BA0530700759ADC /* KTDropdownMenuViewDemo */,
+				E34EE3131BA0530800759ADC /* KTDropdownMenuViewDemoTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E34EE2F91BA0530700759ADC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E34EE30A1BA0530800759ADC /* Main.storyboard in Resources */,
+				E34EE30F1BA0530800759ADC /* LaunchScreen.xib in Resources */,
+				E34EE30C1BA0530800759ADC /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E34EE3121BA0530800759ADC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1BFAEE4FEC82D78AC258DC10 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		3A8D87C33C983619C02B4F75 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E34EE2F71BA0530700759ADC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E34EE3071BA0530700759ADC /* ViewController.m in Sources */,
+				E34EE3041BA0530700759ADC /* AppDelegate.m in Sources */,
+				E34EE3011BA0530700759ADC /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E34EE3101BA0530800759ADC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E34EE31B1BA0530800759ADC /* KTDropdownMenuViewDemoTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E34EE3161BA0530800759ADC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E34EE2FA1BA0530700759ADC /* KTDropdownMenuViewDemo */;
+			targetProxy = E34EE3151BA0530800759ADC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		E34EE3081BA0530700759ADC /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E34EE3091BA0530800759ADC /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		E34EE30D1BA0530800759ADC /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E34EE30E1BA0530800759ADC /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		E34EE31C1BA0530800759ADC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E34EE31D1BA0530800759ADC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E34EE31F1BA0530800759ADC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA645F0C76104EEE5BD34F17 /* Pods.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = KTDropdownMenuViewDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		E34EE3201BA0530800759ADC /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EE8235C6A89536B7A8F0F35B /* Pods.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = KTDropdownMenuViewDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		E34EE3221BA0530800759ADC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = KTDropdownMenuViewDemoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KTDropdownMenuViewDemo.app/KTDropdownMenuViewDemo";
+			};
+			name = Debug;
+		};
+		E34EE3231BA0530800759ADC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = KTDropdownMenuViewDemoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KTDropdownMenuViewDemo.app/KTDropdownMenuViewDemo";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E34EE2F61BA0530700759ADC /* Build configuration list for PBXProject "KTDropdownMenuViewDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E34EE31C1BA0530800759ADC /* Debug */,
+				E34EE31D1BA0530800759ADC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E34EE31E1BA0530800759ADC /* Build configuration list for PBXNativeTarget "KTDropdownMenuViewDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E34EE31F1BA0530800759ADC /* Debug */,
+				E34EE3201BA0530800759ADC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E34EE3211BA0530800759ADC /* Build configuration list for PBXNativeTarget "KTDropdownMenuViewDemoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E34EE3221BA0530800759ADC /* Debug */,
+				E34EE3231BA0530800759ADC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E34EE2F31BA0530700759ADC /* Project object */;
+}
