@@ -12,6 +12,8 @@
 @interface KTDropdownMenuView()
 
 @property (nonatomic, copy) NSArray *titles;
+@property (nonatomic, assign) BOOL isMenuShow;
+@property (nonatomic, assign) NSUInteger selectedIndex;
 
 @property (nonatomic, strong) UIButton *titleButton;
 @property (nonatomic, strong) UIImageView *arrowImageView;
@@ -20,6 +22,8 @@
 
 @implementation KTDropdownMenuView
 
+#pragma mark -- life cycle --
+
 - (instancetype)initWithFrame:(CGRect)frame titles:(NSArray *)titles
 {
     if (self = [super initWithFrame:frame])
@@ -27,6 +31,8 @@
         _animationDuration=0.4;
         _backgroundAlpha=0.3;
         _cellHeight=44;
+        _isMenuShow = NO;
+        _selectedIndex = 0;
         _titles= titles;
         
         [self addSubview:self.titleButton];
@@ -43,7 +49,24 @@
     return self;
 }
 
-#pragma -- getter and setter --
+#pragma mark -- handle actions --
+
+- (void)handleTapOnTitleButton:(UIButton *)button
+{
+    self.isMenuShow = !self.isMenuShow;
+}
+
+#pragma mark -- helper methods --
+
+- (void)showMenu
+{
+}
+
+- (void)hideMenu
+{
+}
+
+#pragma mark -- getter and setter --
 
 - (UIColor *)cellColor
 {
@@ -92,6 +115,7 @@
     {
         _titleButton = [[UIButton alloc] init];
         [_titleButton setTitle:[self.titles objectAtIndex:0] forState:UIControlStateNormal];
+        [_titleButton addTarget:self action:@selector(handleTapOnTitleButton:) forControlEvents:UIControlEventTouchUpInside];
     }
     
     return _titleButton;
@@ -108,6 +132,34 @@
     }
     
     return _arrowImageView;
+}
+
+- (void)setIsMenuShow:(BOOL)isMenuShow
+{
+    if (_isMenuShow != isMenuShow)
+    {
+        _isMenuShow = isMenuShow;
+        
+        if (isMenuShow)
+        {
+            [self showMenu];
+        }
+        else
+        {
+            [self hideMenu];
+        }
+            
+    }
+}
+
+- (void)setSelectedIndex:(NSUInteger)selectedIndex
+{
+    if (_selectedIndex != selectedIndex)
+    {
+        _selectedIndex = selectedIndex;
+        
+        self.isMenuShow = NO;
+    }
 }
 
 @end
