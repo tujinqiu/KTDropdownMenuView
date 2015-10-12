@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		A9F91F9F05DC99F7ABEF5479 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A18E021C53DE15EC2A9B9463 /* libPods.a */; };
 		E30DF7DD1BCC047F007B524A /* KTDropdownMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = E30DF7DC1BCC047F007B524A /* KTDropdownMenuView.m */; settings = {ASSET_TAGS = (); }; };
+		E30DF7DF1BCC0514007B524A /* KTDropdownMenuView.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E30DF7DE1BCC0514007B524A /* KTDropdownMenuView.bundle */; settings = {ASSET_TAGS = (); }; };
 		E34EE3011BA0530700759ADC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E34EE3001BA0530700759ADC /* main.m */; };
 		E34EE3041BA0530700759ADC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E34EE3031BA0530700759ADC /* AppDelegate.m */; };
 		E34EE3071BA0530700759ADC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E34EE3061BA0530700759ADC /* ViewController.m */; };
@@ -33,6 +34,7 @@
 		AA645F0C76104EEE5BD34F17 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		E30DF7DB1BCC047F007B524A /* KTDropdownMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KTDropdownMenuView.h; sourceTree = "<group>"; };
 		E30DF7DC1BCC047F007B524A /* KTDropdownMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KTDropdownMenuView.m; sourceTree = "<group>"; };
+		E30DF7DE1BCC0514007B524A /* KTDropdownMenuView.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = KTDropdownMenuView.bundle; sourceTree = "<group>"; };
 		E34EE2FB1BA0530700759ADC /* KTDropdownMenuViewDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KTDropdownMenuViewDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E34EE2FF1BA0530700759ADC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E34EE3001BA0530700759ADC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 		E30DF7DA1BCC0415007B524A /* KTDropdownMenuView */ = {
 			isa = PBXGroup;
 			children = (
+				E30DF7DE1BCC0514007B524A /* KTDropdownMenuView.bundle */,
 				E30DF7DB1BCC047F007B524A /* KTDropdownMenuView.h */,
 				E30DF7DC1BCC047F007B524A /* KTDropdownMenuView.m */,
 			);
@@ -239,6 +242,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E34EE30A1BA0530800759ADC /* Main.storyboard in Resources */,
+				E30DF7DF1BCC0514007B524A /* KTDropdownMenuView.bundle in Resources */,
 				E34EE30F1BA0530800759ADC /* LaunchScreen.xib in Resources */,
 				E34EE30C1BA0530800759ADC /* Images.xcassets in Resources */,
 			);
