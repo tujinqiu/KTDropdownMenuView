@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "KTDropdownMenuView.h"
 
 @interface ViewController ()
 
@@ -17,6 +18,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
+    [self.navigationController.navigationBar setBarTintColor:[UIColor greenColor]];
+    
+    KTDropdownMenuView *menuView = [[KTDropdownMenuView alloc] initWithFrame:CGRectMake(0, 0,100, 44) titles:@[@"首页", @"朋友圈", @"我的关注", @"明星", @"家人朋友"]];
+    self.navigationItem.titleView = menuView;
 }
 
 - (void)didReceiveMemoryWarning {
