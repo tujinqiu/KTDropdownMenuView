@@ -127,6 +127,8 @@ static const CGFloat kKTDropdownMenuViewHeaderHeight = 300;
         cell.accessoryType = UITableViewCellAccessoryNone;
     }
     cell.backgroundColor = self.cellColor;
+    cell.textLabel.font = self.textFont;
+    cell.textLabel.textColor = self.textColor;
     
     return cell;
 }
