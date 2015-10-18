@@ -9,6 +9,7 @@ https://github.com/PhamBaTho/BTNavigationDropdownMenu
 
 用法：
 ---
+导入文件夹KTDropdownMenuView到工程中
 ```c
     NSArray *titles = @[@"首页", @"朋友圈", @"我的关注", @"明星", @"家人朋友"];
     KTDropdownMenuView *menuView = [[KTDropdownMenuView alloc] initWithFrame:CGRectMake(0, 0,100, 44) titles:titles];
