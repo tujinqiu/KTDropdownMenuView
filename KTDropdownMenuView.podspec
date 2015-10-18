@@ -1,14 +1,16 @@
-Pod::Spec.new do |s|
-    s.name         = 'KTDropdownMenuView'
-    s.version      = '1.0.0'
-    s.summary      = 'A Dropdown Menu Navigation View'
-    s.homepage     = 'https://github.com/tujinqiu/KTDropdownMenuView'
-    s.license      = 'MIT'
-    s.authors      = {'tujinqiu' => 'tujinqiu@126.com'}
-    s.platform     = :ios, '7.0'
-    s.source       = {:git => 'https://github.com/tujinqiu/KTDropdownMenuView.git', :tag => s.version}
-    s.source_files = 'KTDropdownMenuViewDemo/KTDropdownMenuViewDemo/KTDropdownMenuView/**/*.{h,m}'
-    s.resource     = 'KTDropdownMenuViewDemo/KTDropdownMenuViewDemo/KTDropdownMenuView/KTDropdownMenuView.bundle'
-    s.dependency     ‘Masonry’, '~> 0.6.3’
-    s.requires_arc = true
+Pod::Spec.new do |spec|
+  spec.name         = 'KTDropdownMenuView'
+  spec.version      = '1.0.0'
+  spec.license      = 'MIT'
+  spec.summary      = 'A Dropdown Menu Navigation View'
+  spec.homepage     = 'https://github.com/tujinqiu/KTDropdownMenuView'
+  spec.description = <<-DESC
+                     A Dropdown Menu Navigation View withObjective-C
+                   DESC
+  spec.author       = 'tujinqiu'
+  spec.source       = { :git => 'git://github.com/lukeredpath/libPusher.git', :tag => 'v1.3' }
+  spec.source_files = 'KTDropdownMenuViewDemo/KTDropdownMenuViewDemo/KTDropdownMenuView/**/*.{h,m}'
+  spec.requires_arc = true
+  spec.resource     = 'KTDropdownMenuViewDemo/KTDropdownMenuViewDemo/KTDropdownMenuView/KTDropdownMenuView.bundle'
+  spec.dependency 'Masonry'
 end

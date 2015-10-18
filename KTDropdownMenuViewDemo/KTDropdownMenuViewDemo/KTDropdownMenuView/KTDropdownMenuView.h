@@ -32,6 +32,9 @@
 // background opacity default 0.3
 @property (nonatomic, assign) CGFloat backgroundAlpha;
 
+// callback block
+@property (nonatomic, copy) void (^selectedAtIndex)(int index);
+
 - (instancetype)initWithFrame:(CGRect)frame titles:(NSArray*)titles;
 
 @end

@@ -139,6 +139,10 @@ static const CGFloat kKTDropdownMenuViewHeaderHeight = 300;
 {
     self.selectedIndex = indexPath.row;
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if (self.selectedAtIndex)
+    {
+        self.selectedAtIndex((int)indexPath.row);
+    }
 }
 
 #pragma mark -- handle actions --
@@ -339,6 +343,7 @@ static const CGFloat kKTDropdownMenuViewHeaderHeight = 300;
     if (_selectedIndex != selectedIndex)
     {
         _selectedIndex = selectedIndex;
+        [_titleButton setTitle:[_titles objectAtIndex:selectedIndex] forState:UIControlStateNormal];
         [self.tableView reloadData];
     }
     
