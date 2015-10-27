@@ -156,13 +156,14 @@ static const CGFloat kKTDropdownMenuViewHeaderHeight = 300;
 
 - (void)showMenu
 {
+    self.titleButton.enabled = NO;
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, kKTDropdownMenuViewHeaderHeight)];
     headerView.backgroundColor = self.cellColor;
     self.tableView.tableHeaderView = headerView;
     [self.tableView layoutIfNeeded];
     
     [self.tableView mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.wrapperView.mas_top).offset(- kKTDropdownMenuViewHeaderHeight);
+        make.top.equalTo(self.wrapperView.mas_top).offset(-kKTDropdownMenuViewHeaderHeight);
         make.bottom.equalTo(self.wrapperView.mas_bottom).offset(kKTDropdownMenuViewHeaderHeight);
     }];
     self.wrapperView.hidden = NO;
@@ -181,11 +182,13 @@ static const CGFloat kKTDropdownMenuViewHeaderHeight = 300;
                      animations:^{
                          [self.tableView layoutIfNeeded];
                          self.backgroundView.alpha = self.backgroundAlpha;
+                         self.titleButton.enabled = YES;
                      } completion:nil];
 }
 
 - (void)hideMenu
 {
+    self.titleButton.enabled = NO;
     CGFloat tableCellsHeight = _cellHeight * _titles.count;
     [self.tableView mas_updateConstraints:^(MASConstraintMaker *make) {
         make.left.right.equalTo(self.wrapperView);
@@ -208,6 +211,8 @@ static const CGFloat kKTDropdownMenuViewHeaderHeight = 300;
                          self.backgroundView.alpha = 0.0;
                      } completion:^(BOOL finished) {
                          self.wrapperView.hidden = YES;
+                         [self.tableView reloadData];
+                         self.titleButton.enabled = YES;
                      }];
 }
 
@@ -334,7 +339,6 @@ static const CGFloat kKTDropdownMenuViewHeaderHeight = 300;
         {
             [self hideMenu];
         }
-            
     }
 }
 
@@ -344,7 +348,6 @@ static const CGFloat kKTDropdownMenuViewHeaderHeight = 300;
     {
         _selectedIndex = selectedIndex;
         [_titleButton setTitle:[_titles objectAtIndex:selectedIndex] forState:UIControlStateNormal];
-        [self.tableView reloadData];
     }
     
     self.isMenuShow = NO;
