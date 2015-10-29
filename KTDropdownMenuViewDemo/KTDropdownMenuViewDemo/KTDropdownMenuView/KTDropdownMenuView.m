@@ -191,7 +191,6 @@ static const CGFloat kKTDropdownMenuViewHeaderHeight = 300;
     self.titleButton.enabled = NO;
     CGFloat tableCellsHeight = _cellHeight * _titles.count;
     [self.tableView mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.left.right.equalTo(self.wrapperView);
         make.top.equalTo(self.wrapperView.mas_top).offset(-tableCellsHeight - kKTDropdownMenuViewHeaderHeight);
         make.bottom.equalTo(self.wrapperView.mas_bottom).offset(tableCellsHeight + kKTDropdownMenuViewHeaderHeight);
     }];
