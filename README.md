@@ -2,6 +2,7 @@
 类似新浪微博的下拉菜单
 
 ![](https://github.com/tujinqiu/KTDropdownMenuView/raw/master/Untitled.gif)
+
 ![](https://github.com/tujinqiu/KTDropdownMenuView/raw/master/Untitled1.gif)
 
 仿照 BTNavigationDropdownMenu 的Objective-C版本
