@@ -10,30 +10,31 @@
 #import <Masonry.h>
 
 static const CGFloat kKTDropdownMenuViewHeaderHeight = 300;
+#define SCREEN_SIZE ([UIScreen mainScreen].bounds.size)
 
-@interface UIViewController (topestViewController)
+@interface UIViewController (toPresentViewController)
 
-- (UIViewController *)topestViewController;
+- (UIViewController *)toPresentViewController;
 
 @end
 
-@implementation UIViewController (topestViewController)
+@implementation UIViewController (toPresentViewController)
 
-- (UIViewController *)topestViewController
+- (UIViewController *)toPresentViewController
 {
     if (self.presentedViewController)
     {
-        return [self.presentedViewController topestViewController];
+        return [self.presentedViewController toPresentViewController];
     }
     if ([self isKindOfClass:[UITabBarController class]])
     {
         UITabBarController *tab = (UITabBarController *)self;
-        return [[tab selectedViewController] topestViewController];
+        return [[tab selectedViewController] toPresentViewController];
     }
     if ([self isKindOfClass:[UINavigationController class]])
     {
         UINavigationController *nav = (UINavigationController *)self;
-        return [[nav visibleViewController] topestViewController];
+        return [[nav visibleViewController] toPresentViewController];
     }
     
     return self;
@@ -68,7 +69,7 @@ static const CGFloat kKTDropdownMenuViewHeaderHeight = 300;
         _isMenuShow = NO;
         _selectedIndex = 0;
         _titles = titles;
-        
+    
         [self addSubview:self.titleButton];
         [self addSubview:self.arrowImageView];
         [self.titleButton mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -78,29 +79,51 @@ static const CGFloat kKTDropdownMenuViewHeaderHeight = 300;
             make.left.equalTo(self.titleButton.mas_right).offset(5);
             make.centerY.equalTo(self.titleButton.mas_centerY);
         }];
+        
         UIWindow *keyWindow = [UIApplication sharedApplication].keyWindow;
-        UINavigationBar *navBar = [keyWindow.rootViewController topestViewController].navigationController.navigationBar;
+        UINavigationBar *navBar = [keyWindow.rootViewController toPresentViewController].navigationController.navigationBar;
         [keyWindow addSubview:self.wrapperView];
+
+        
         [self.wrapperView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.right.bottom.equalTo(keyWindow);
             make.top.equalTo(navBar.mas_bottom);
         }];
         [self.wrapperView addSubview:self.backgroundView];
+        self.backgroundView.backgroundColor = [UIColor redColor];
         [self.backgroundView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.edges.equalTo(self.wrapperView);
         }];
+        
         [self.wrapperView addSubview:self.tableView];
+        
         CGFloat tableCellsHeight = _cellHeight * _titles.count;
         [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.right.equalTo(self.wrapperView);
             make.top.equalTo(self.wrapperView.mas_top).offset(-tableCellsHeight - kKTDropdownMenuViewHeaderHeight);
             make.bottom.equalTo(self.wrapperView.mas_bottom).offset(tableCellsHeight + kKTDropdownMenuViewHeaderHeight);
+            
         }];
+        
+//        UIView *tapView = [UIView new];
+//        [self.wrapperView addSubview:tapView];
+//        self.wrapperView.userInteractionEnabled = tapView.userInteractionEnabled = YES;
+//        tapView.backgroundColor = [UIColor redColor];
+//        
+//        [tapView mas_makeConstraints:^(MASConstraintMaker *make) {
+//            
+//            make.top.mas_equalTo(self.tableView.mas_bottom).offset(0);
+//            make.size.mas_equalTo(CGSizeMake(SCREEN_SIZE.width, SCREEN_SIZE.height - 64 - tableCellsHeight));
+//        }];
+        
+        
         self.wrapperView.hidden = YES;
+    
     }
     
     return self;
 }
+
 
 #pragma mark -- UITableViewDataSource --
 
@@ -118,18 +141,18 @@ static const CGFloat kKTDropdownMenuViewHeaderHeight = 300;
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"tableViewCell" forIndexPath:indexPath];
     cell.textLabel.text = [self.titles objectAtIndex:indexPath.row];
-    if (self.selectedIndex == indexPath.row)
-    {
+    if (self.selectedIndex == indexPath.row){
+        
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
-    }
-    else
-    {
+    }else{
+        
         cell.accessoryType = UITableViewCellAccessoryNone;
     }
+    
+    cell.tintColor = self.cellAccessoryCheckmarkColor;
     cell.backgroundColor = self.cellColor;
     cell.textLabel.font = self.textFont;
     cell.textLabel.textColor = self.textColor;
-    
     return cell;
 }
 
@@ -150,7 +173,10 @@ static const CGFloat kKTDropdownMenuViewHeaderHeight = 300;
 - (void)handleTapOnTitleButton:(UIButton *)button
 {
     self.isMenuShow = !self.isMenuShow;
+    
 }
+
+
 
 #pragma mark -- helper methods --
 
@@ -188,6 +214,8 @@ static const CGFloat kKTDropdownMenuViewHeaderHeight = 300;
 
 - (void)hideMenu
 {
+    _isMenuShow = NO;
+ 
     self.titleButton.enabled = NO;
     CGFloat tableCellsHeight = _cellHeight * _titles.count;
     [self.tableView mas_updateConstraints:^(MASConstraintMaker *make) {
@@ -215,13 +243,14 @@ static const CGFloat kKTDropdownMenuViewHeaderHeight = 300;
                      }];
 }
 
+
 #pragma mark -- getter and setter --
 
 - (UIColor *)cellColor
 {
     if (!_cellColor)
     {
-        _cellColor = [UIColor greenColor];
+        _cellColor = [UIColor orangeColor];
     }
     
     return _cellColor;
@@ -235,6 +264,16 @@ static const CGFloat kKTDropdownMenuViewHeaderHeight = 300;
     }
     
     return _cellSeparatorColor;
+}
+
+- (UIColor *)cellAccessoryCheckmarkColor{
+    
+    if (!_cellAccessoryCheckmarkColor) {
+        
+        _cellAccessoryCheckmarkColor = [UIColor whiteColor];
+    }
+    
+    return _cellAccessoryCheckmarkColor;
 }
 
 - (UIColor *)textColor
@@ -293,7 +332,6 @@ static const CGFloat kKTDropdownMenuViewHeaderHeight = 300;
         _tableView.dataSource = self;
         _tableView.backgroundColor = [UIColor clearColor];
         _tableView.tableFooterView = [[UIView alloc] init];
-        _tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
         _tableView.separatorColor = self.cellSeparatorColor;
         [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"tableViewCell"];
     }
@@ -307,6 +345,7 @@ static const CGFloat kKTDropdownMenuViewHeaderHeight = 300;
     {
         _wrapperView = [[UIView alloc] init];
         _wrapperView.clipsToBounds = YES;
+        _wrapperView.backgroundColor = [UIColor whiteColor];
     }
     
     return _wrapperView;
