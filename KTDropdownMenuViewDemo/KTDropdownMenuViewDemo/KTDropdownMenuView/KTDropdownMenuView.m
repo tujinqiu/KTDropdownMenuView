@@ -10,6 +10,7 @@
 #import <Masonry.h>
 
 static const CGFloat kKTDropdownMenuViewHeaderHeight = 300;
+static const CGFloat kKTDropdownMenuViewAutoHideHeight = 44;
 
 @interface UIViewController (topestViewController)
 
@@ -62,6 +63,7 @@ static const CGFloat kKTDropdownMenuViewHeaderHeight = 300;
 {
     if (self = [super initWithFrame:frame])
     {
+        _width = 0.0;
         _animationDuration = 0.4;
         _backgroundAlpha = 0.3;
         _cellHeight = 44;
@@ -71,35 +73,78 @@ static const CGFloat kKTDropdownMenuViewHeaderHeight = 300;
         
         [self addSubview:self.titleButton];
         [self addSubview:self.arrowImageView];
-        [self.titleButton mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.center.equalTo(self);
-        }];
-        [self.arrowImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(self.titleButton.mas_right).offset(5);
-            make.centerY.equalTo(self.titleButton.mas_centerY);
-        }];
         UIWindow *keyWindow = [UIApplication sharedApplication].keyWindow;
-        UINavigationBar *navBar = [keyWindow.rootViewController topestViewController].navigationController.navigationBar;
         [keyWindow addSubview:self.wrapperView];
-        [self.wrapperView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.right.bottom.equalTo(keyWindow);
-            make.top.equalTo(navBar.mas_bottom);
-        }];
         [self.wrapperView addSubview:self.backgroundView];
-        [self.backgroundView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.edges.equalTo(self.wrapperView);
-        }];
         [self.wrapperView addSubview:self.tableView];
-        CGFloat tableCellsHeight = _cellHeight * _titles.count;
-        [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.right.equalTo(self.wrapperView);
-            make.top.equalTo(self.wrapperView.mas_top).offset(-tableCellsHeight - kKTDropdownMenuViewHeaderHeight);
-            make.bottom.equalTo(self.wrapperView.mas_bottom).offset(tableCellsHeight + kKTDropdownMenuViewHeaderHeight);
-        }];
-        self.wrapperView.hidden = YES;
+        
+        // 添加KVO监听tableView的contenOffset属性，添加上滑返回功能
+        NSKeyValueObservingOptions options = NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld;
+        [self.tableView addObserver:self forKeyPath:@"contentOffset" options:options context:nil];
     }
     
     return self;
+}
+
+- (void)willMoveToSuperview:(UIView *)newSuperview
+{
+    [super willMoveToSuperview:newSuperview];
+    
+    [self.titleButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.center.equalTo(self);
+    }];
+    [self.arrowImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.titleButton.mas_right).offset(5);
+        make.centerY.equalTo(self.titleButton.mas_centerY);
+    }];
+    UIWindow *keyWindow = [UIApplication sharedApplication].keyWindow;
+    UINavigationBar *navBar = [keyWindow.rootViewController topestViewController].navigationController.navigationBar;
+    [self.wrapperView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.bottom.equalTo(keyWindow);
+        make.top.equalTo(navBar.mas_bottom);
+    }];
+    [self.backgroundView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self.wrapperView);
+    }];
+    CGFloat tableCellsHeight = _cellHeight * _titles.count;
+    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(self.wrapperView.mas_centerX);
+        if (self.width > 79.99999)
+        {
+            make.width.mas_equalTo(self.width);
+        }
+        else
+        {
+            make.width.equalTo(self.wrapperView.mas_width);
+        }
+        make.top.equalTo(self.wrapperView.mas_top).offset(-tableCellsHeight - kKTDropdownMenuViewHeaderHeight);
+        make.bottom.equalTo(self.wrapperView.mas_bottom).offset(tableCellsHeight + kKTDropdownMenuViewHeaderHeight);
+    }];
+    self.wrapperView.hidden = YES;
+}
+
+- (void)dealloc
+{
+    [self.tableView removeObserver:self forKeyPath:@"contentOffset"];
+}
+
+#pragma mark -- KVO --
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context
+{
+    // 遇到这些情况就直接返回
+    if (!self.userInteractionEnabled || !self.isMenuShow)
+        return;
+    
+    // 这个就算看不见也需要处理
+    if ([keyPath isEqualToString:@"contentOffset"])
+    {
+        CGPoint newOffset = [[change valueForKey:@"new"] CGPointValue];
+        if (newOffset.y > kKTDropdownMenuViewAutoHideHeight)
+        {
+            self.isMenuShow = !self.isMenuShow;
+        }
+    }
 }
 
 #pragma mark -- UITableViewDataSource --
@@ -221,12 +266,13 @@ static const CGFloat kKTDropdownMenuViewHeaderHeight = 300;
 {
     if (!_cellColor)
     {
-        _cellColor = [UIColor greenColor];
+        _cellColor = [UIColor colorWithRed:0.296 green:0.613 blue:1.000 alpha:1.000];
     }
     
     return _cellColor;
 }
 
+@synthesize cellSeparatorColor = _cellSeparatorColor;
 - (UIColor *)cellSeparatorColor
 {
     if (!_cellSeparatorColor)
@@ -237,6 +283,16 @@ static const CGFloat kKTDropdownMenuViewHeaderHeight = 300;
     return _cellSeparatorColor;
 }
 
+- (void)setCellSeparatorColor:(UIColor *)cellSeparatorColor
+{
+    if (_tableView)
+    {
+        _tableView.separatorColor = cellSeparatorColor;
+    }
+    _cellSeparatorColor = cellSeparatorColor;
+}
+
+@synthesize textColor = _textColor;
 - (UIColor *)textColor
 {
     if (!_textColor)
@@ -247,6 +303,16 @@ static const CGFloat kKTDropdownMenuViewHeaderHeight = 300;
     return _textColor;
 }
 
+- (void)setTextColor:(UIColor *)textColor
+{
+    if (_titleButton)
+    {
+        [_titleButton setTitleColor:textColor forState:UIControlStateNormal];
+    }
+    _textColor = textColor;
+}
+
+@synthesize textFont = _textFont;
 - (UIFont *)textFont
 {
     if(!_textFont)
@@ -255,6 +321,15 @@ static const CGFloat kKTDropdownMenuViewHeaderHeight = 300;
     }
     
     return _textFont;
+}
+
+- (void)setTextFont:(UIFont *)textFont
+{
+    if (_titleButton)
+    {
+        [_titleButton.titleLabel setFont:textFont];;
+    }
+    _textFont = textFont;
 }
 
 - (UIButton *)titleButton
@@ -350,6 +425,18 @@ static const CGFloat kKTDropdownMenuViewHeaderHeight = 300;
     }
     
     self.isMenuShow = NO;
+}
+
+- (void)setWidth:(CGFloat)width
+{
+    if (width < 80.0)
+    {
+        NSLog(@"width should be set larger than 80, otherwise it will be set to be equal to window width");
+        
+        return;
+    }
+    
+    _width = width;
 }
 
 @end
