@@ -284,17 +284,6 @@ static const CGFloat kKTDropdownMenuViewAutoHideHeight = 44;
     return _cellSeparatorColor;
 }
 
-- (UIColor *)cellAccessoryCheckmarkColor{
-    
-    if (!_cellAccessoryCheckmarkColor) {
-        
-        _cellAccessoryCheckmarkColor = [UIColor whiteColor];
-    }
-    
-    return _cellAccessoryCheckmarkColor;
-}
-
-
 - (void)setCellSeparatorColor:(UIColor *)cellSeparatorColor
 {
     if (_tableView)
@@ -302,6 +291,16 @@ static const CGFloat kKTDropdownMenuViewAutoHideHeight = 44;
         _tableView.separatorColor = cellSeparatorColor;
     }
     _cellSeparatorColor = cellSeparatorColor;
+}
+
+- (UIColor *)cellAccessoryCheckmarkColor
+{
+    if (!_cellAccessoryCheckmarkColor)
+    {
+        _cellAccessoryCheckmarkColor = [UIColor whiteColor];
+    }
+    
+    return _cellAccessoryCheckmarkColor;
 }
 
 @synthesize textColor = _textColor;

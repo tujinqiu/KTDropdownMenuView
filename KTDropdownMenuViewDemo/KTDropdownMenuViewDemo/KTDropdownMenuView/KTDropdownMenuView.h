@@ -21,7 +21,7 @@
 // cell seprator color default whiteColor
 @property (nonatomic, strong) UIColor *cellSeparatorColor;
 
-// CellAccessoryCheckmark color default whiteColor
+// cell accessory check mark color default whiteColor
 @property (nonatomic, strong) UIColor *cellAccessoryCheckmarkColor;
 
 // cell height default 44
