@@ -171,6 +171,7 @@ static const CGFloat kKTDropdownMenuViewAutoHideHeight = 44;
     {
         cell.accessoryType = UITableViewCellAccessoryNone;
     }
+    cell.tintColor = self.cellAccessoryCheckmarkColor;
     cell.backgroundColor = self.cellColor;
     cell.textLabel.font = self.textFont;
     cell.textLabel.textColor = self.textColor;
@@ -291,6 +292,17 @@ static const CGFloat kKTDropdownMenuViewAutoHideHeight = 44;
     }
     _cellSeparatorColor = cellSeparatorColor;
 }
+
+- (UIColor *)cellAccessoryCheckmarkColor
+{
+    if (!_cellAccessoryCheckmarkColor)
+    {
+        _cellAccessoryCheckmarkColor = [UIColor whiteColor];
+    }
+    
+    return _cellAccessoryCheckmarkColor;
+}
+
 
 @synthesize textColor = _textColor;
 - (UIColor *)textColor

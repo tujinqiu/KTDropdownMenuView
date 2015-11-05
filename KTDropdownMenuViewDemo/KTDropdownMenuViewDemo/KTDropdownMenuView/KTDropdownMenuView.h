@@ -21,11 +21,15 @@
 // cell seprator color default whiteColor
 @property (nonatomic, strong) UIColor *cellSeparatorColor;
 
+// cell accessory check mark color default whiteColor
+@property (nonatomic, strong) UIColor *cellAccessoryCheckmarkColor;
+
 // cell height default 44
 @property (nonatomic, assign) CGFloat cellHeight;
 
 // animation duration default 0.4
 @property (nonatomic, assign) CGFloat animationDuration;
+
 
 // text color default whiteColor
 @property (nonatomic, strong) UIColor *textColor;
