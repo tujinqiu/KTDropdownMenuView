@@ -303,6 +303,7 @@ static const CGFloat kKTDropdownMenuViewAutoHideHeight = 44;
     return _cellAccessoryCheckmarkColor;
 }
 
+
 @synthesize textColor = _textColor;
 - (UIColor *)textColor
 {

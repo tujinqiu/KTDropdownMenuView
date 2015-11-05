@@ -26,7 +26,7 @@
     {
         NSLog(@"selected title:%@", titles[index]);
     };
-    menuView.width = 150;
+    menuView.width = 300;
     self.navigationItem.titleView = menuView;
 }
 
