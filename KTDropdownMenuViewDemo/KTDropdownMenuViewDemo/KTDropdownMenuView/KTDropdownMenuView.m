@@ -12,36 +12,6 @@
 static const CGFloat kKTDropdownMenuViewHeaderHeight = 300;
 static const CGFloat kKTDropdownMenuViewAutoHideHeight = 44;
 
-@interface UIViewController (topestViewController)
-
-- (UIViewController *)topestViewController;
-
-@end
-
-@implementation UIViewController (topestViewController)
-
-- (UIViewController *)topestViewController
-{
-    if (self.presentedViewController)
-    {
-        return [self.presentedViewController topestViewController];
-    }
-    if ([self isKindOfClass:[UITabBarController class]])
-    {
-        UITabBarController *tab = (UITabBarController *)self;
-        return [[tab selectedViewController] topestViewController];
-    }
-    if ([self isKindOfClass:[UINavigationController class]])
-    {
-        UINavigationController *nav = (UINavigationController *)self;
-        return [[nav visibleViewController] topestViewController];
-    }
-    
-    return self;
-}
-
-@end
-
 @interface KTDropdownMenuView()<UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, copy) NSArray *titles;
@@ -73,8 +43,6 @@ static const CGFloat kKTDropdownMenuViewAutoHideHeight = 44;
         
         [self addSubview:self.titleButton];
         [self addSubview:self.arrowImageView];
-        UIWindow *keyWindow = [UIApplication sharedApplication].keyWindow;
-        [keyWindow addSubview:self.wrapperView];
         [self.wrapperView addSubview:self.backgroundView];
         [self.wrapperView addSubview:self.tableView];
         
@@ -86,41 +54,50 @@ static const CGFloat kKTDropdownMenuViewAutoHideHeight = 44;
     return self;
 }
 
-- (void)willMoveToSuperview:(UIView *)newSuperview
+- (void)didMoveToWindow
 {
-    [super willMoveToSuperview:newSuperview];
+    [super didMoveToWindow];
     
-    [self.titleButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.center.equalTo(self);
-    }];
-    [self.arrowImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.titleButton.mas_right).offset(5);
-        make.centerY.equalTo(self.titleButton.mas_centerY);
-    }];
-    UIWindow *keyWindow = [UIApplication sharedApplication].keyWindow;
-    UINavigationBar *navBar = [keyWindow.rootViewController topestViewController].navigationController.navigationBar;
-    [self.wrapperView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.bottom.equalTo(keyWindow);
-        make.top.equalTo(navBar.mas_bottom);
-    }];
-    [self.backgroundView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.wrapperView);
-    }];
-    CGFloat tableCellsHeight = _cellHeight * _titles.count;
-    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.equalTo(self.wrapperView.mas_centerX);
-        if (self.width > 79.99999)
-        {
-            make.width.mas_equalTo(self.width);
-        }
-        else
-        {
-            make.width.equalTo(self.wrapperView.mas_width);
-        }
-        make.top.equalTo(self.wrapperView.mas_top).offset(-tableCellsHeight - kKTDropdownMenuViewHeaderHeight);
-        make.bottom.equalTo(self.wrapperView.mas_bottom).offset(tableCellsHeight + kKTDropdownMenuViewHeaderHeight);
-    }];
-    self.wrapperView.hidden = YES;
+    if (self.window)
+    {
+        [self.window addSubview:self.wrapperView];
+        
+        [self.titleButton mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.center.equalTo(self);
+        }];
+        [self.arrowImageView mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(self.titleButton.mas_right).offset(5);
+            make.centerY.equalTo(self.titleButton.mas_centerY);
+        }];
+        // 依附于导航栏下面
+        [self.wrapperView mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.left.right.bottom.equalTo(self.window);
+            make.top.equalTo(self.superview.mas_bottom);
+        }];
+        [self.backgroundView mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.edges.equalTo(self.wrapperView);
+        }];
+        CGFloat tableCellsHeight = _cellHeight * _titles.count;
+        [self.tableView mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.centerX.equalTo(self.wrapperView.mas_centerX);
+            if (self.width > 79.99999)
+            {
+                make.width.mas_equalTo(self.width);
+            }
+            else
+            {
+                make.width.equalTo(self.wrapperView.mas_width);
+            }
+            make.top.equalTo(self.wrapperView.mas_top).offset(-tableCellsHeight - kKTDropdownMenuViewHeaderHeight);
+            make.bottom.equalTo(self.wrapperView.mas_bottom).offset(tableCellsHeight + kKTDropdownMenuViewHeaderHeight);
+        }];
+        self.wrapperView.hidden = YES;
+    }
+    else
+    {
+        // 避免不能销毁的问题
+        [self.wrapperView removeFromSuperview];
+    }
 }
 
 - (void)dealloc
@@ -196,6 +173,11 @@ static const CGFloat kKTDropdownMenuViewAutoHideHeight = 44;
 - (void)handleTapOnTitleButton:(UIButton *)button
 {
     self.isMenuShow = !self.isMenuShow;
+}
+
+- (void)orientChange:(NSNotification *)notif
+{
+    NSLog(@"change orientation");
 }
 
 #pragma mark -- helper methods --
@@ -362,9 +344,9 @@ static const CGFloat kKTDropdownMenuViewAutoHideHeight = 44;
 {
     if (!_arrowImageView)
     {
-        NSString * bundlePath = [[ NSBundle mainBundle] pathForResource:@"KTDropdownMenuView" ofType:@ "bundle"];
-        NSString *imgPath= [bundlePath stringByAppendingPathComponent:@"arrow_down_icon.png"];
-        UIImage *image=[UIImage imageWithContentsOfFile:imgPath];
+        NSString * bundlePath = [[NSBundle mainBundle] pathForResource:@"KTDropdownMenuView" ofType:@"bundle"];
+        NSString *imgPath = [bundlePath stringByAppendingPathComponent:@"arrow_down_icon.png"];
+        UIImage *image = [UIImage imageWithContentsOfFile:imgPath];
         _arrowImageView = [[UIImageView alloc] initWithImage:image];
     }
     
